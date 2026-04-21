@@ -4,7 +4,7 @@ import User from "../modles/User.js";
 
 export const inngest = new Inngest({
   id: "talent-iq",
-  signingKey: process.env.INNGEST_SIGNING_KEY,
+  INNGEST_SIGNING_KEY: process.env.INNGEST_SIGNING_KEY,
 });
 
 const syncUser = inngest.createFunction(
