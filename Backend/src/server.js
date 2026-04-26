@@ -6,7 +6,7 @@ import cors from "cors";
 import { serve } from "inngest/express";
 import { functions, inngest } from "./lib/inngest.js";
 import { clerkMiddleware } from "@clerk/express";
-import { protectRoute } from "./middlewares/protectRoute.js";
+import chatRoutes from "./routes/chatRoutes.js";
 
 const app = express();
 
