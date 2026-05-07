@@ -1,6 +1,7 @@
 import express from "express";
 import { ENV } from "./lib/env.js";
 import path from "path";
+import { connectDB } from "./lib/db.js";
 
 const app = express();
 
@@ -12,6 +13,15 @@ app.get("/health", (req, res) => {
 
 //make our app ready for development
 
-app.listen(ENV.PORT, () => {
-  console.log("Server is listning at port no.", ENV.PORT);
-});
+const startServer = async () => {
+  try {
+    await connectDB();
+    app.listen(ENV.PORT, () => {
+      console.log("Server is listning at port no.", ENV.PORT);
+    });
+  } catch (error) {
+    console.log("💥error connecting the server");
+  }
+};
+
+startServer();
